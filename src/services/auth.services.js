@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const util = require('../utils/util')
 const permissions = require('../models/permissions')
 const login = async (email, password) => {
-    // check the error and return
+   
     logger.info(`Authenticating email ${email} and password ${password}`)
     let user = await usermodels.getUserEmailAndPasword(email, password)
     if (user.length == 0) {
@@ -34,7 +34,6 @@ const register = async (user) => {
     let resp = await usermodels.register(user);
     if (!resp) {
         err = 'something went wrong'
-        // throw new ApiError(401,`something seems to be wrong`)
     }
     return {resp, err};
   

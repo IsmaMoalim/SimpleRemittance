@@ -71,9 +71,7 @@ const register = async (user) => {
     console.log(qry);
     let result = await database.executeQuery(qry);
     return result;
-//     if (result.rowsAffected === 1)
-//     return true;
-//   return false;
+
   
   }
 

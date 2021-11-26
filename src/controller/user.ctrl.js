@@ -3,14 +3,18 @@ let logger = require('../config/logger');
 let { handleAsync } = require('../utils/util')
 let  {userServices}  = require('../services');
 let { ApiResponse } = require('../payload/ApiResponses');
-let database = require('../config/Database');
 
+/**
+ * get All Users
+ */
 const getAllUsers = async (req, res) => {
   let result = await userServices.getAllUsers();
   res.status(status.OK).send(new ApiResponse(status.OK, "waa la helay", result));
 };
 
-
+/**
+ * get UserById
+ */
 const getuserByID = handleAsync( async (req, res) => {
   let  resp = await userServices.isIDExist(req.params.userid)
   if(resp) {
@@ -19,6 +23,9 @@ const getuserByID = handleAsync( async (req, res) => {
     }
 });
 
+/**
+ * Create User
+ */
 const createUser = handleAsync( async (req, res) => {
   let data = req.body;
   console.log(data);
@@ -31,6 +38,9 @@ const createUser = handleAsync( async (req, res) => {
  });
 
 
+ /**
+ * Update User
+ */
 const updateUser = handleAsync( async (req, res) => {
   let data = req.body;
   logger.info('Updating the user...')
@@ -41,6 +51,9 @@ const updateUser = handleAsync( async (req, res) => {
   }
 });
 
+/**
+ * Delete User
+ */
 const deleteUser = handleAsync( async (req, res) => {
  let  resp = await userServices.isIDExist(req.params.userid)
   if(resp) {
@@ -56,5 +69,4 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  // getDataFromdb
 }

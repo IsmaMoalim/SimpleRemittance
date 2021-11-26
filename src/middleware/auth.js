@@ -5,6 +5,9 @@ let {handleAsync} = require('../utils/util')
 const NodeCache = require( "node-cache" );
 const myCache = new NodeCache();
 
+/**
+ * Authentication
+ */
 const authen = (data) => handleAsync(async (req,res,next) =>{
       let token = myCache.get("myKey");
       let role = token.payload.role
@@ -25,6 +28,9 @@ const authen = (data) => handleAsync(async (req,res,next) =>{
     });
     
 
+/**
+ * Authorization
+ */
 const auth = (req, res, next) =>{
     let bearerHeader = req.headers['authorization'];
     

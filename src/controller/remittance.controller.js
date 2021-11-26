@@ -3,6 +3,9 @@ let remittanceService = require('../services/remittance.service')
 let {ApiError} =require ('../payload/ApiErrors')
 let {ApiResponse} = require ('../payload/ApiResponses')
 
+/**
+ * get customers
+ */
 const getCustomers = async (req, res) =>{
     let result = await remittanceService.getCustomers();
     res.status(status.OK)
@@ -10,6 +13,9 @@ const getCustomers = async (req, res) =>{
 
 }
 
+/**
+ * get customerById
+ */
 const getCustomer = async (req, res) =>{
     let result = await remittanceService.getCustomer(req.params.id,req.params.type);
     res.status(status.OK)
@@ -17,6 +23,9 @@ const getCustomer = async (req, res) =>{
 
 }
 
+/**
+ * get remittance
+ */
 const getRemittance = async (req,res) =>{
     let result = await remittanceService.getRemittance()
     res.status(status.OK)
@@ -24,6 +33,9 @@ const getRemittance = async (req,res) =>{
 
 }
 
+/**
+ * create remittance
+ */
 const createRamittance = async (req,res) =>{
     let data  = req.body;
 let result = await remittanceService.createRamittance(data)

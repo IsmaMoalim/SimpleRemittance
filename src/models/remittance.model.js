@@ -1,12 +1,18 @@
 const database = require('../config/Database')
 
 
+/**
+ * get Cutomers with their country
+ */
 const getCustomers = async () =>{
     let query = `select c.customerid,customername,co.countryid,countryname,rates  from customers c,country co,currencies cu where 
     c.country = co.countryid and co.countryid = cu.countryid`
     return database.executeQuery(query)
 }
 
+/**
+ * get sender and reciever by using condition, when i choose sender i will get all the remaining customers
+ */
 const getCustomer = async (id,type) =>{
     let query =''
     if (type == 'equal'){
@@ -20,13 +26,18 @@ const getCustomer = async (id,type) =>{
     return database.executeQuery(query)
 }
 
+/**
+ * get All Remittance Information
+ */
 const getRemittance = async () =>{
     let query = `select remittid, customerid, customername,  amount, charge,  paymenttype, remitdate from remittance , customers, payments
     where customers.customerid = remittance.sender and payments.paymentid = remittance.payment`
     return database.executeQuery(query);
 }
 
-
+/**
+ * Create Remittance
+ */
 const createRamittance  = async (user) =>{
     let remittid = user.remittid;
     let send = user.send;

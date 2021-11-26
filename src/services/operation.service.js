@@ -1,42 +1,57 @@
 const operationModel = require('../models/operation.model');
 
-// get countries
+/**
+ * get countries
+ */
 const getCountries = async () => {
 let result = await operationModel.getCountries();
 return result;
 }
 
-// get currencies
+/**
+ * get currencies
+ */
 const getCurrencies = async () => {
 let result = await operationModel.getCurrencies();
 return result;
 }
 
-// get currency
+/**
+ * get currencyById
+ */
 const getCurrency = async (countryId) => {
 let result = await operationModel.getCurrency(countryId);
 return result;
 
 }
 
-// get state
+/**
+ * get state
+ */
 const getState = async (countryId) => {
     let result = await operationModel.getState(countryId);
     return result;
 }
 
-// get city
+/**
+ * get city
+ */
 const getCity = async (countryId,stateId) => {
     let result = await operationModel.getCity(countryId,stateId);
     return result;
 }
 
-// get status
+/**
+ * get status
+ */
 const getStatus = async () => {
     let result = await operationModel.getStatus();
      return result;
 }
 
+/**
+ * get payments
+ */
 const getpayment = async () => {
     let result = await operationModel.getpayment();
     return result;

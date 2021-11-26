@@ -1,13 +1,10 @@
 const status = require("http-status");
 const operationService = require("../services/operation.service");
 const {ApiResponse} = require("../payload/ApiResponses");
-// const {handleAsync} = require("../utils/util");
 
-
-
-
-
-// get countries
+/**
+ * get countries
+ */
 const getCountries = async (req, res) => {
     let result = await operationService.getCountries();
     res.status(status.OK)
@@ -15,14 +12,18 @@ const getCountries = async (req, res) => {
 
 }
 
-// get currencies
+/**
+ * get currencies
+ */
 const getCurrencies = async (req, res) => {
     let result = await operationService.getCurrencies();
     res.status(status.OK)
     .send(new ApiResponse(status.OK, 'currencies', result));
 }
 
-// get currency
+/**
+ * get currencyById
+ */
 const getCurrency = async (req, res) => {
     let countryId = req.params.countryid;
     let result = await operationService.getCurrency(countryId);
@@ -30,7 +31,9 @@ const getCurrency = async (req, res) => {
     .send(new ApiResponse(status.OK, 'single currency', result));
 }
 
-// get state
+/**
+ * get state
+ */
 const getState = async (req, res) => {
     let countryId = req.params.countryid;
     let result = await operationService.getState(countryId);
@@ -38,7 +41,9 @@ const getState = async (req, res) => {
     .send(new ApiResponse(status.OK, 'single state', result));
 }
 
-// get city
+/**
+ * get city
+ */
 const getCity = async (req, res) => {
     let countryId = req.params.countryid;
     let stateid = req.params.stateid;
@@ -48,7 +53,9 @@ const getCity = async (req, res) => {
 
 }
 
-// get status
+/**
+ * get status
+ */
 const getStatus = async (req, res) => {
     let result = await operationService.getStatus();
     res.status(status.OK)
@@ -56,6 +63,9 @@ const getStatus = async (req, res) => {
 
 }
 
+/**
+ * get payments
+ */
 const getpayment = async (req, res) => {
     let result = await operationService.getpayment();
     res.status(status.OK)
