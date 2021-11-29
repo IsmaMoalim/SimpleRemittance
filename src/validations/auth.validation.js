@@ -8,7 +8,7 @@ const login = joi.object({
 
 const register = joi.object({
     customername: joi.string().required(),
-    phone: joi.string().required(),
+    phone: joi.required(),
     countryid: joi.string().required(),
     stateid: joi.string().required(),
     cityid: joi.string().required()

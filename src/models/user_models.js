@@ -64,10 +64,10 @@ const del = async (userid) =>{
 const register = async (user) => {
     let customername = user.customername;
     let phone = user.phone;
-    let country = user.countryid;
-    let state = user.stateid;
-    let city = user.cityid;
-    let qry =  `insert into customers values(1,'${customername}','${phone}',${country},${state},${city})`;
+    let country = user.country;
+    let state = user.state;
+    let city = user.city;
+    let qry =  `insert into customers values(customerid_seq.nextval,'${customername}','${phone}','${country}','${state}','${city}')`;
     console.log(qry);
     let result = await database.executeQuery(qry);
     return result;
